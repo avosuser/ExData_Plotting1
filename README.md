@@ -1,4 +1,20 @@
-## Introduction to my project
+
+## Summary of how I went about doing the Poject1 assignment.
+
+I have independent code for each plot i.e. you can run plot3.R independent of plot1.R and hence you will see duplicate code on each of the R files.
+
+* My code uses packages sqldf, lubridate and data.table, see comments on the code file for installation instructions.
+
+* I setup working directory which suits my needs, feel free to change it as needed for your computer.
+
+* Once the raw data file is downloaded and unzipped, I read the required data for the two days into a data.table.
+
+* I took the date and time columns and added a new column to the data.table. This column is used on all the graphs where the X-axis needs date/time information.
+
+* The rest of the code just uses the plot function to plot the graphs.
+
+
+## Summary of Data used on this project
 
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
@@ -32,24 +48,4 @@ web site</a>:
 <li><b>Sub_metering_2</b>: energy sub-metering No. 2 (in watt-hour of active energy). It corresponds to the laundry room, containing a washing-machine, a tumble-drier, a refrigerator and a light. </li>
 <li><b>Sub_metering_3</b>: energy sub-metering No. 3 (in watt-hour of active energy). It corresponds to an electric water-heater and an air-conditioner.</li>
 </ol>
-
-## How my Code works
-
-I have independent code for each plot i.e. you can run plot3.R independent of plot1.R and hence you will see duplicate code on each of the R files.
-
-* My code uses packages sqldf, lubridate and data.table, see comments on the code file for installation instructions.
-
-* I setup working directory which suits my needs, feel free to change it as needed for your computer.
-
-* You may find it useful to convert the Date and Time variables to
-Date/Time classes in R using the `strptime()` and `as.Date()`
-functions.
-
-* Once the raw data file is downloaded and unzipped, I read the required data for the two days into a data.table.
-
-* I took the date and time columns and added a new column to the data.table. This column is used on all the graphs where the X-axis needs date/time information.
-
-* The rest of the code just uses the plot function to plot the graphs.
-
-
 
