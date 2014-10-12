@@ -31,12 +31,37 @@ powerdata[powerdata == "?"] <- NA
 
 powerdata[,Date_time:=dmy_hms(paste(Date, Time))]
                         
-# Draw the histogram to screen copy and save the histogram to disk as plot1.png
+# Draw the 4 line and directly save the histogram to disk as plot4.png
 
-png(filename = "plot1.png", units = "px", width = 480, height = 480)
-hist(powerdata$Global_active_power, main = "Global Active Power",
-     xlab = "Global Active Power (kilowatts)", ylab = "Frequency",
-     col = "red", cex.main = 0.75, cex.lab = 0.75, cex.axis = 0.75)
+png(filename = "plot4.png", units = "px", width = 480, height = 480)
+
+#par(mfrow = c(2,2), mar = c(4, 4, 2, 1))
+par(mfrow = c(2,2))
+
+
+
+plot(powerdata$Date_time, powerdata$Global_active_power, type = "l", 
+     xlab = "",ylab = "Global Active Power",
+     cex.lab = 1, cex.axis = 1)
+
+plot(powerdata$Date_time, powerdata$Voltage, type = "l", 
+     xlab = "datetime", ylab = "Voltage",
+     cex.lab = 1, cex.axis = 1)
+
+plot(powerdata$Date_time, powerdata$Sub_metering_1, type = "n", xlab = "", ylab = "Energy sub metring",
+     cex.main = 1, cex.lab = 1, cex.axis = 1)
+
+points(powerdata$Date_time, powerdata$Sub_metering_1, col = "black", type = "l")
+points(powerdata$Date_time, powerdata$Sub_metering_2, col = "red", type = "l")
+points(powerdata$Date_time, powerdata$Sub_metering_3, col = "blue", type = "l")
+
+legend("topright", lty = c(1, 1, 1), lwd = c (1, 1, 1),  col = c("black", "red", "blue"), 
+       c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), bty = "n", cex = 0.75)
+
+plot(powerdata$Date_time, powerdata$Global_reactive_power, type = "l", 
+     xlab = "datetime",ylab = "Global_reactive_power",
+     cex.lab = 1, cex.axis = 1)
+
 
 dev.off()
 

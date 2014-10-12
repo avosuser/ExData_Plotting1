@@ -31,12 +31,19 @@ powerdata[powerdata == "?"] <- NA
 
 powerdata[,Date_time:=dmy_hms(paste(Date, Time))]
                         
-# Draw the histogram to screen copy and save the histogram to disk as plot1.png
+# Draw the line graph to a plot3.png directly and close png using dev.off()
 
-png(filename = "plot1.png", units = "px", width = 480, height = 480)
-hist(powerdata$Global_active_power, main = "Global Active Power",
-     xlab = "Global Active Power (kilowatts)", ylab = "Frequency",
-     col = "red", cex.main = 0.75, cex.lab = 0.75, cex.axis = 0.75)
+png(filename = "plot3.png", units = "px", width = 480, height = 480)
+
+plot(powerdata$Date_time, powerdata$Sub_metering_1, type = "n", xlab = "", ylab = "Energy sub metring",
+     cex.main = 1, cex.lab = 1, cex.axis = 1)
+
+points(powerdata$Date_time, powerdata$Sub_metering_1, col = "black", type = "l")
+points(powerdata$Date_time, powerdata$Sub_metering_2, col = "red", type = "l")
+points(powerdata$Date_time, powerdata$Sub_metering_3, col = "blue", type = "l")
+
+legend("topright", lty = c(1, 1, 1), lwd = c (1, 1, 1),  col = c("black", "red", "blue"), 
+       c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex = 1)
 
 dev.off()
 
